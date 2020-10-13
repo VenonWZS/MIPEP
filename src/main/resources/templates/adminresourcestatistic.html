@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>layuiAdmin 控制台主页一</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">资源统计</div>
+                        <div class="layui-card-body">
+
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                                <div carousel-item>
+                                    <ul class="layui-row layui-col-space10">
+                                        <li class="layui-col-xs4">
+                                            <a class="layadmin-backlog-body">
+                                                <h3>资源总数</h3>
+                                                <p><cite th:text="${resourceCount}"></cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs4">
+                                            <a class="layadmin-backlog-body">
+                                                <h3>论文资源</h3>
+                                                <p><cite th:text="${essayCount}"></cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs4">
+                                            <a class="layadmin-backlog-body">
+                                                <h3>代码资源</h3>
+                                                <p><cite th:text="${codeCount}">99</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs4">
+                                            <a onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
+                                                <h3>数据集资源</h3>
+                                                <p><cite th:text="${datasetCount}"></cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs4">
+                                            <a class="layadmin-backlog-body">
+                                                <h3>总评论数</h3>
+                                                <p><cite th:text="${commentCount}">5</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs4">
+                                            <a class="layadmin-backlog-body">
+                                                <h3>用户总数</h3>
+                                                <p><cite th:text="${userCount}"></cite></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md7">
+                    <div class="layui-card">
+                        <div class="layui-card-header">资源统计图</div>
+                        <div class="layui-card-body">
+                            <div id="EchartZhu" style="width: 100%;height: 500px;"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md5">
+                    <div class="layui-card">
+                        <div class="layui-card-header">资源统计图</div>
+                        <div class="layui-card-body">
+                            <div id="EchartRealZhu" style="width: 100%;height: 500px;"> </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="layui-col-md4">-->
+<!--                    <div class="layui-card">-->
+<!--                        <div class="layui-card-header">资源统计图</div>-->
+<!--                        <div class="layui-card-body">-->
+<!--                            <div id="EchartZhe" style="width: 100%;height: 500px;"> </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script src="../../layuiadmin/layui/layui.js?t=1"></script>
+<script>
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'console','element', 'echarts'],function() {
+
+        var element = layui.element,
+            $ = layui.jquery,
+            echarts = layui.echarts;
+        var chartZhu = echarts.init(document.getElementById('EchartZhu'));
+        var chartRealZhu = echarts.init(document.getElementById('EchartRealZhu'));
+        //var chartZhe= echarts.init(document.getElementById('EchartZhe'));
+        var optionchartBing = {
+            title: {
+                text: '',
+                //subtext: '纯属虚构', //副标题
+                x: 'left' //标题居中
+            },
+            tooltip: {
+                // trigger: 'item' //悬浮显示对比
+            },
+            legend: {
+                //orient: 'vertical', //类型垂直,默认水平
+                left: 'left', //类型区分在左 默认居中
+                data: ['论文', '代码', '数据集']
+            },
+            color:['#f6da22','#bbe2e8','#6cacde'],
+            series: [{
+                type: 'pie', //饼状
+                radius: '60%', //圆的大小
+                center: ['50%', '50%'], //居中
+                data: [{
+                    value: [[${essayCount}]],
+                    name: '论文'
+                },
+                    {
+                        value: [[${codeCount}]],
+                        name: '代码'
+                    },
+                    {
+                        value: [[${datasetCount}]],
+                        name: '数据集'
+                    }
+                ]
+            }]
+        };
+        var optionchart = {
+            title: {
+                text: ''
+            },
+            tooltip: {},
+            color:['#bbe2e8'],
+            legend: {
+                data: ['资源', '评论', '用户']
+            },
+            xAxis: {
+                data: ['资源', '评论', '用户']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name: '',
+                type: 'bar', //柱状
+                data: [
+                    [[${resourceCount}]],
+                    [[${commentCount}]],
+                    [[${userCount}]],
+                ]
+
+            }]
+        };
+        var optionchartZhe = {
+            title: {
+                text: '商品订单'
+            },
+            tooltip: {},
+            legend: { //顶部显示 与series中的数据类型的name一致
+                data: ['销量', '产量', '营业额', '单价']
+            },
+            xAxis: {
+                // type: 'category',
+                // boundaryGap: false, //从起点开始
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name: '销量',
+                type: 'line', //线性
+                data: [145, 230, 701, 734, 1090, 1130, 1120],
+            }, {
+                name: '产量',
+                type: 'line', //线性
+                data: [720, 832, 801, 834, 1190, 1230, 1220],
+            }, {
+                smooth: true, //曲线 默认折线
+                name: '营业额',
+                type: 'line', //线性
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+            }, {
+                smooth: true, //曲线
+                name: '单价',
+                type: 'line', //线性
+                data: [220, 332, 401, 534, 690, 730, 820],
+            }]
+        };
+        chartRealZhu.setOption(optionchart, true);
+        chartZhu.setOption(optionchartBing, true);
+        //chartZhe.setOption(optionchartZhe, true);
+
+    });
+
+    // (function (global, factory) {
+    //     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    //         typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    //             window.layui && layui.define ? layui.define(function(exports){exports('echarts',factory(exports))}) :
+    //                 (factory((global.echarts = {})));
+    // }
+    //
+
+
+</script>
+</body>
+</html>
+

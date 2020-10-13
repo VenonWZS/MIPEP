@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>个人主页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/template.css" media="all">
+</head>
+<body>
+
+
+<div class="layui-fluid layadmin-homepage-fluid">
+
+
+    <div class="layui-row layui-col-space8">
+        <!--左侧-->
+<!--        <div class="layui-col-md2">-->
+<!--            <div class="layadmin-homepage-panel layadmin-homepage-shadow">-->
+<!--                <div class="layui-card text-center">-->
+<!--                    <div class="layui-card-body">-->
+<!--                        <div class="layadmin-homepage-pad-ver">-->
+<!--                            <img class="layadmin-homepage-pad-img" src="../../layuiadmin/style/res/template/portrait.png" width="96" height="96">-->
+<!--                        </div>-->
+<!--                        <h4 class="layadmin-homepage-font">胡歌</h4>-->
+<!--                        <p class="layadmin-homepage-min-font">中国知名演员</p>-->
+<!--                        <div class="layadmin-homepage-pad-ver">-->
+<!--                            <a href="javascript:;" class="layui-icon layui-icon-cellphone"></a>-->
+<!--                            <a href="javascript:;" class="layui-icon layui-icon-vercode"></a>-->
+<!--                            <a href="javascript:;" class="layui-icon layui-icon-login-wechat"></a>-->
+<!--                            <a href="javascript:;" class="layui-icon layui-icon-login-qq"></a>-->
+<!--                        </div>-->
+<!--                        <button class="layui-btn layui-btn-fluid">跟随</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <p class="layadmin-homepage-about">-->
+<!--                    关于我-->
+<!--                </p>-->
+<!--                <ul class="layadmin-homepage-list-group">-->
+<!--                    <li class="list-group-item"><i class="layui-icon layui-icon-location"></i>中国上海</li>-->
+<!--                    <li class="list-group-item"><a href="javascript:;" class="color"><i class="layui-icon layui-icon-snowflake"></i><span style="word-wrap:break-word;">https://weibo.com/hu_ge</span></a></li>-->
+<!--                </ul>-->
+<!--                <div class="layadmin-homepage-pad-hor">-->
+<!--                    <mdall>胡歌喜欢摄影，也喜欢写字，他视角独特，充满着奇思妙想。他有着极丰富的情感，和对生活的热情，他能点燃观众心中爱的火焰；胡歌积极、乐观、坚强，他脚踏实地地做好每一件事，真诚地对待身边每一个人</mdall>-->
+<!--                </div>-->
+<!--                <p class="layadmin-homepage-about">-->
+<!--                    技能-->
+<!--                </p>-->
+<!--                <ul class="layadmin-homepage-list-inline">-->
+<!--                    <a href="javascript:;" class="layui-btn layui-btn-primary">演员</a>-->
+<!--                    <a href="javascript:;" class="layui-btn layui-btn-primary">主持人</a>-->
+<!--                    <a href="javascript:;" class="layui-btn layui-btn-primary">摄影师</a>-->
+<!--                    <a href="javascript:;" class="layui-btn layui-btn-primary">导演</a>-->
+<!--                    <a href="javascript:;" class="layui-btn layui-btn-primary">公共人物</a>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+        <!--中间-->
+        <div class="layui-col-md12">
+            <div class="layui-fluid layadmin-homepage-content">
+                <!--头部-->
+                <div class="layui-row layadmin-homepage-padding20">
+                    <hr class="new-section-xs"></hr>
+                    <div class="layui-col-md10 layadmin-homepage-padding8">
+                        <div class="layui-row layadmin-homepage-text-center">
+                            <div class="layui-col-md4 layui-col-sm4 layui-col-xs4">
+                                <p class="h4">3</p>
+                                <mdall>关注</mdall>
+                            </div>
+<!--                            <div class="layui-col-md3 layui-col-sm3 layui-col-xs3">-->
+<!--                                <p class="h4">72K</p>-->
+<!--                                <mdall>以下</mdall>-->
+<!--                            </div>-->
+                            <div class="layui-col-md4 layui-col-sm4 layui-col-xs4">
+                                <p class="h4">53</p>
+                                <mdall>浏览</mdall>
+                            </div>
+                            <div class="layui-col-md4 layui-col-sm4 layui-col-xs4">
+                                <p class="h4"><i class="layui-icon layui-icon-rate-solid"></i>2</p>
+                                <mdall>排行</mdall>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md2">
+                        <a href="fileDowland" class="layui-btn layui-btn-normal">下载资源</a>
+                        <a href="/searchtable" class="layui-btn">返回</a>
+                    </div>
+                </div>
+                <!--头部结束-->
+                <!--头部下方面板-->
+                <div class="layui-row layui-col-space20 layadmin-homepage-list-imgtxt">
+                    <div class="layui-col-md12">
+                        <div class="grid-demo">
+                            <!--详情区 -->
+                            <div class="panel-body layadmin-homepage-shadow">
+                                <blockquote class="layui-elem-quote">资源详情</blockquote>
+                                <div class="media-list">
+                                    <div class="layui-row">
+                                        <div class="layui-col-md2">
+                                            <p>资源名称</p>
+                                            <h2 th:text="${session.sessionDetailedAllResource.name}"></h2>
+                                        </div>
+                                        <div class="layui-col-md2">
+                                            <p>资源类型</p>
+                                            <h2 th:text="${session.sessionDetailedAllResource.type}"></h2>
+                                        </div>
+                                        <div class="layui-col-md2">
+                                            <p>资源作者</p>
+                                            <h2 th:text="${session.sessionDetailedAllResource.writer}"></h2>
+                                        </div>
+                                        <div class="layui-col-md2">
+                                            <p>资源领域</p>
+                                            <h2 th:text="${session.sessionDetailedAllResource.areaname}"></h2>
+                                        </div>
+                                        <div class="layui-col-md2">
+                                            <p>上传者</p>
+                                            <h2 th:text="${session.sessionDetailedAllResource.userid}"></h2>
+                                        </div>
+                                        <div class="layui-col-md2">
+                                            <p>上传时间</p>
+                                            <h2 th:text="${session.sessionDetailedAllResource.uploadtime}"></h2>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <!--上传区 -->
+                            <div class="panel-body layadmin-homepage-shadow" >
+                                <div class="media-list">
+
+                                    <form class="layui-form" th:if="${session.sessionDetailedAllResource.judgeTypeEssay()}">
+                                        <blockquote class="layui-elem-quote">建立资源关联</blockquote>
+                                        <br><br>
+                                        <div class="layui-form-item" >
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>请选择您想与这个论文相关联的资源</legend>
+<!--                                                <div class="layui-field-box">-->
+<!--                                                    <label  style="margin-left:0.9em;width:5em;font-size: 1em;">请选择您想与这个资源相关联的资源</label>-->
+<!--                                                </div>-->
+                                            </fieldset>
+                                        </div>
+                                        <div class="layui-form-item" >
+                                            <div class="layui-input-block" style="margin-left:0.8em">
+                                                <select name="tobelink" lay-verify="required">
+                                                    <option value=""></option>
+                                                    <option th:each="an : ${allmyresource}" th:value="${an.getId()}" th:text="${an.getName()}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block" style="margin-left:0.8em">
+                                                <button class="layui-btn" lay-submit lay-filter="linkresource">建立关联</button>
+                                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                            </div>
+                                        </div>
+                                        <br><br>
+                                    </form>
+                                    <form class="layui-form" th:if="${session.sessionDetailedAllResource.judgeTypeNotEssay()}">
+                                        <blockquote class="layui-elem-quote">建立资源关联</blockquote>
+                                        <br><br>
+                                        <div class="layui-form-item" >
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>请选择您想与这个资源相关联的论文</legend>
+                                                <!--                                                <div class="layui-field-box">-->
+                                                <!--                                                    <label  style="margin-left:0.9em;width:5em;font-size: 1em;">请选择您想与这个资源相关联的资源</label>-->
+                                                <!--                                                </div>-->
+                                            </fieldset>
+                                        </div>
+                                        <div class="layui-form-item" >
+                                            <div class="layui-input-block" style="margin-left:0.8em">
+                                                <select name="tobelink" lay-verify="required">
+                                                    <option value=""></option>
+                                                    <option th:each="an : ${allessayresource}" th:value="${an.getId()}" th:text="${an.getName()}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block" style="margin-left:0.8em">
+                                                <button class="layui-btn" lay-submit lay-filter="linkessay">建立关联</button>
+                                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                            </div>
+                                        </div>
+                                        <br><br>
+                                    </form>
+                                    <!--相关资源下拉框-->
+                                    <div class="layui-collapse">
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title">查看与此资源关联的资源</h2>
+                                        <div class="layui-colla-content layui-show">
+                                            <table class="layui-hide" id="test-table-reload" lay-filter="test-table-reload"></table>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                </div>
+                            </div>
+                            <!--评论区 -->
+                            <div class="panel-body layadmin-homepage-shadow">
+                                <div class="media-list">
+                                    <blockquote class="layui-elem-quote">发表评论</blockquote>
+                                    <br>
+                                    <div class="layui-col-md12">
+                                        <form class="layui-form">
+                                            <div class="layui-form-item" >
+                                                <fieldset class="layui-elem-field layui-field-title">
+                                                    <legend>请输入您对该资源的评论</legend>
+                                                </fieldset>
+                                            </div>
+                                            <div class="layui-form-item layui-form-text">
+                                                <div class="layui-input-block" style="margin-left:0.8em">
+                                                    <textarea lay-verify="required" name="desc" placeholder="请输入评论" class="layui-textarea"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <div class="layui-input-block layui-input-right" style="margin-left:0.8em">
+                                                    <button class="layui-btn" lay-submit lay-filter="formDemo">发表评论</button>
+                                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <br><br>
+                                    </div>
+                                    <hr>
+                                    <!--相关评论下拉框-->
+                                    <div class="layui-collapse">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">查看此关于资源的所有评论</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                <div th:each="comment : ${detailpagecomments}" class="media-body" style="margin-bottom: 10px;">
+                                                    <blockquote class="layui-elem-quote layui-quote-nm" >
+                                                        <h2><span th:text="${comment.commentcontent}"></span></h2>
+                                                        <br>
+                                                        <p>评论用户<span th:text="${comment.userid}"></span></p>
+                                                        <p><span th:text="${comment.commenttime}"></span></p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--右侧-->
+<!--        <div class="layui-col-md2">-->
+<!--            <div class="layadmin-homepage-panel layadmin-homepage-shadow">-->
+<!--                <div class="layui-card text-center">-->
+<!--                    <div class="layui-card-body">-->
+<!--                        <div class="layadmin-homepage-pad-ver">-->
+<!--                            <img class="layadmin-homepage-pad-img" src="../../layuiadmin/style/res/template/portrait.png" width="96" height="96">-->
+<!--                        </div>-->
+<!--                        <h4 class="layadmin-homepage-font">胡歌</h4>-->
+<!--                        <p class="layadmin-homepage-min-font">中国知名演员</p>-->
+<!--                        <div class="layadmin-homepage-pad-ver">-->
+<!--                            <a href="javascript:;" class="layui-icon layui-icon-cellphone"></a>-->
+<!--                            <a href="javascript:;" class="layui-icon layui-icon-vercode"></a>-->
+<!--                            <a href="javascript:;" class="layui-icon layui-icon-login-wechat"></a>-->
+<!--                            <a href="javascript:;" class="layui-icon layui-icon-login-qq"></a>-->
+<!--                        </div>-->
+<!--                        <button class="layui-btn layui-btn-fluid">跟随</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <p class="layadmin-homepage-about">-->
+<!--                    关于我-->
+<!--                </p>-->
+<!--                <ul class="layadmin-homepage-list-group">-->
+<!--                    <li class="list-group-item"><i class="layui-icon layui-icon-location"></i>中国上海</li>-->
+<!--                    <li class="list-group-item"><a href="javascript:;" class="color"><i class="layui-icon layui-icon-snowflake"></i><span style="word-wrap:break-word;">https://weibo.com/hu_ge</span></a></li>-->
+<!--                </ul>-->
+<!--                <div class="layadmin-homepage-pad-hor">-->
+<!--                    <mdall>胡歌喜欢摄影，也喜欢写字，他视角独特，充满着奇思妙想。他有着极丰富的情感，和对生活的热情，他能点燃观众心中爱的火焰；胡歌积极、乐观、坚强，他脚踏实地地做好每一件事，真诚地对待身边每一个人</mdall>-->
+<!--                </div>-->
+<!--                <p class="layadmin-homepage-about">-->
+<!--                    技能-->
+<!--                </p>-->
+<!--                <ul class="layadmin-homepage-list-inline">-->
+<!--                    <a href="javascript:;" class="layui-btn layui-btn-primary">演员</a>-->
+<!--                    <a href="javascript:;" class="layui-btn layui-btn-primary">主持人</a>-->
+<!--                    <a href="javascript:;" class="layui-btn layui-btn-primary">摄影师</a>-->
+<!--                    <a href="javascript:;" class="layui-btn layui-btn-primary">导演</a>-->
+<!--                    <a href="javascript:;" class="layui-btn layui-btn-primary">公共人物</a>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    </div>
+</div>
+
+
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script th:inline="none">
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index']);
+    layui.use(['layer','form', 'table'],function(){
+        var form = layui.form;
+        var table=layui.table;
+
+
+        form.on('submit(formDemo)', function(data){
+            //这里请求后台
+            layui.$.ajax({
+
+                cache:false,
+                url:"addcomment",
+                async: false,
+                type:"POST",
+                dataType: "text",
+                data:data.field,
+                type:'POST',
+                success :function (data) {
+
+                    layer.msg(data, {
+                        icon: 1,
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function(){
+                        window.location.href = "/resourcedetailpage"
+                    });
+                },
+                error: function(){
+
+                    layer.msg("上传发生错误，请重新上传")
+
+                }
+            });
+            return false;
+        });
+        //表单提交结束
+        form.on('submit(linkresource)', function(data){
+            //这里请求后台
+            layui.$.ajax({
+
+                cache:false,
+                url:"linkresource",
+                async: false,
+                type:"POST",
+                dataType: "text",
+                data:data.field,
+                type:'POST',
+                success :function (data) {
+                    layer.msg(data, {
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function(){
+                        window.location.href = "/resourcedetailpage"
+                    });
+                    //layer.msg(data)
+                },
+                error: function(){
+
+                    layer.msg("上传发生错误，请重新上传")
+
+                }
+            });
+            return false;
+        });
+        form.on('submit(linkessay)', function(data){
+            //这里请求后台
+            layui.$.ajax({
+
+                cache:false,
+                url:"linkessay",
+                async: false,
+                type:"POST",
+                dataType: "text",
+                data:data.field,
+                type:'POST',
+                success :function (data) {
+
+                    layer.msg(data, {
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function(){
+                        window.location.href = "/resourcedetailpage"
+                    });
+                },
+                error: function(){
+
+                    layer.msg("上传发生错误，请重新上传")
+
+                }
+            });
+            return false;
+        });
+        table.render({
+            elem: '#test-table-reload'
+            ,url: 'relatedTableData'
+            ,even: true
+            ,cols: [[
+                // {field:'id', title: '',width:60}
+
+                {field:'name', title: '名称'}
+                ,{field:'type', title: '类型'}
+                ,{field:'writer', title: '作者'}
+                ,{field:'areaname', title: '领域'}
+                ,{field:'source', title: '来源'}
+                ,{field:'summary', title: '资源简介'}
+
+                ,{field:'userid', title: '上传用户'}
+
+                //,{field:'uploadtime', title: '上传时间', sort: true}
+
+
+
+            ]]
+            ,page: false
+            ,height: 'full-600'
+        });
+    })
+
+
+</script>
+
+</body>
+</html>

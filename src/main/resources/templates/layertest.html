@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layer 组件功能演示</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>组件</cite></a>
+        <a href="http://layer.layui.com/" target="_blank">layer</a>
+        <a><cite>功能演示</cite></a>
+    </div>
+</div>
+
+<style>
+    /* 这段样式只是用于演示 */
+    #LAY-component-layer-list .layui-card-body{padding-top: 15px;}
+</style>
+
+<div class="layui-fluid" id="LAY-component-layer-list">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card demo-component-layer">
+                <div class="layui-card-header">弹层之美</div>
+                <div class="layui-card-body">
+
+                    <blockquote class="layui-elem-quote">
+                        layer 是 layui 中最广为人知的组件，它可以轻松应对 Web 应用开发中的各类复杂的弹出交互。有人说使用 layer 是一种情怀，一旦用上了，就离不开了。有多少人是因为 layer 才选择 layui 的呢，有一种信仰，叫：无条件相信
+                    </blockquote>
+
+                </div>
+            </div>
+
+            //表单
+            <div class="layui-card">
+                <div class="layui-card-header">上传资源</div>
+                <div class="layui-card-body" style="padding: 15px;">
+                    <form class="layui-form" action="mySubmit" method="post">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">资源名称</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="resourcename" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">资源类型</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="resourcetype" value="essay" title="论文" checked>
+                                <input type="radio" name="resourcetype" value="code" title="代码" >
+                                <input type="radio" name="resourcetype" value="dataset" title="数据集" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">资源作者</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="resourcewriter" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            </div>
+
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">资源来源</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="resourcesource" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">资源领域</label>
+                            <div class="layui-input-block">
+                                <select name="area" lay-verify="required">
+                                    <option value=""></option>
+                                    <option value="1">信息检索</option>
+                                    <option value="2">文本摘要</option>
+                                    <option value="3">推荐系统</option>
+                                    <option value="4">社交分析</option>
+                                    <option value="5">情感分析</option>
+                                    <option value="6">对话系统</option>
+                                    <option value="7">问答系统</option>
+                                    <option value="8">知识图谱</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <!--                <div class="layui-form-item">-->
+                        <!--                    <label class="layui-form-label">复选框</label>-->
+                        <!--                    <div class="layui-input-block">-->
+                        <!--                        <input type="checkbox" name="like[write]" title="写作">-->
+                        <!--                        <input type="checkbox" name="like[read]" title="阅读" checked>-->
+                        <!--                        <input type="checkbox" name="like[dai]" title="发呆">-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
+                        <!--                <div class="layui-form-item">-->
+                        <!--                    <label class="layui-form-label">开关</label>-->
+                        <!--                    <div class="layui-input-block">-->
+                        <!--                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
+
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">资源摘要</label>
+                            <div class="layui-input-block">
+                                <textarea name="resourcesummary" placeholder="请输入内容" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <!--                    <div class="layui-card-header">点击下方按钮上传文件</div>-->
+                            <!--                    <div class="layui-card-body">-->
+                            <label class="layui-form-label">资源上传</label>
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn layui-btn" id="test-upload-change">选择文件</button>
+                                <!--                            <button type="button" class="layui-btn" id="test-upload-change-action">开始上传</button>-->
+                            </div>
+                            <!--                    </div>-->
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-col-lg4"><p></p></div>
+                            <div class="layui-col-lg6">
+                                <div class="layui-input-block">
+
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo" id="test-upload-change-action">立即提交</button>
+                                    <button type="reset" class="layui-btn-lg layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+
+
+            //弹出框
+            <div class="layui-card">
+                <div class="layui-card-header">弹层类型</div>
+                <div class="layui-card-body">
+
+                    <div class="layui-btn-container layadmin-layer-demo">
+                        <button class="layui-btn layui-btn-primary" data-type="test1">Alert</button>
+                        <button class="layui-btn layui-btn-primary" data-type="test2">Confirm</button>
+                        <button class="layui-btn layui-btn-primary" data-type="test3">Msg</button>
+                        <button class="layui-btn layui-btn-primary" data-type="test4">Tips</button>
+                        <button class="layui-btn layui-btn-primary" data-type="test5">Page</button>
+                        <button class="layui-btn layui-btn-primary" data-type="test6">Iframe</button>
+                        <button class="layui-btn layui-btn-primary" data-type="test7">Prompt</button>
+                        <button class="layui-btn layui-btn-primary" data-type="test8">Tab</button>
+                        <button class="layui-btn layui-btn-primary" data-type="test9">Photos</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<script src="../../../layuiadmin/layui/layui.js"></script>
+
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        layer.msg("用户名或密码错误！");
+        //看这里~~~~
+        //监听提交，这里监听了按钮
+        form.on('submit(formDemo)', function(data){
+
+            //这里请求后台
+            $.ajax({
+                url:"/mySubmit",
+                data:JSON.stringify( data.field),
+                dataType:'JSON',
+                contentType : "application/json",
+                type:'POST',
+                success :function (result) {
+                    layer.msg(result.msg)
+                }
+            })
+        });
+        //选完文件后不自动上传
+        upload.render({
+            elem: '#test-upload-change'
+            ,url: '/upload'
+            ,auto: false
+            //,multiple: true
+            ,bindAction: '#test-upload-change-action'
+            ,done: function(res){
+
+                //layer.msg(res.msg)
+
+            }
+        });
+
+    });
+
+</script>
+<!--<script src="../../../layuiadmin/layui/layui.js"></script>-->
+<!--<script>-->
+<!--    layui.config({-->
+<!--        base: '../../../layuiadmin/' //静态资源所在路径-->
+<!--    }).extend({-->
+<!--        index: 'lib/index' //主入口模块-->
+<!--    }).use(['index', 'upload'], function(){-->
+<!--        var $ = layui.jquery-->
+<!--            ,upload = layui.upload-->
+<!--            ,layer = layui.layer;-->
+
+
+<!--    });-->
+<!--</script>-->
+<script src="../../../layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index'], function(){
+        var $ = layui.jquery
+            ,admin = layui.admin
+            ,element = layui.element
+            ,layer = layui.layer
+        ,upload = layui.upload;
+
+        element.render();
+
+        /* 触发弹层 */
+        var active = {
+            test1: function(){
+                layer.alert('你好，体验者');
+            }
+            ,test2: function(){
+                layer.confirm('您是如何看待前端开发？', {
+                    btn: ['重要','奇葩'] //按钮
+                }, function(){
+                    layer.msg('的确很重要', {icon: 1});
+                }, function(){
+                    layer.msg('也可以这样', {
+                        time: 20000, //20s后自动关闭
+                        btn: ['明白了', '知道了']
+                    });
+                });
+            }
+            ,test3: function(){
+                layer.msg('玩命提示中');
+            }
+            ,test4: function(){
+                layer.tips('Hi，我是一个提示', this, {tips: 1});
+            }
+            ,test5: function(){
+                layer.open({
+                    title:'页面层'
+                    ,type: 1
+                    //,skin: 'layui-layer-rim'
+                    ,shadeClose: true
+                    ,area: admin.screen() < 2 ? ['80%', '300px'] : ['700px', '500px']
+                    ,content: '<div style="padding: 20px;">放入任意HTML</div>'
+                });
+            }
+            ,test6: function(){
+                layer.open({
+                    type: 2
+                    ,content: 'http://fly.layui.com/'
+                    ,shadeClose: true
+                    ,area: admin.screen() < 2 ? ['100%', '80%'] : ['375px', '500px']
+                    ,maxmin: true
+                });
+            }
+            ,test7: function(){
+                layer.prompt({title: '输入任何口令，并确认', formType: 1}, function(pass, index){
+                    layer.close(index);
+                    layer.prompt({title: '随便写点啥，并确认', formType: 2}, function(text, index){
+                        layer.close(index);
+                        layer.msg('演示完毕！您的口令：'+ pass +'<br>您最后写下了：'+text);
+                    });
+                });
+            }
+            ,test8: function(){
+                layer.tab({
+                    area: admin.screen() < 2 ? ['100%', '80%'] : ['600px', '300px'],
+                    tab: [{
+                        title: 'TAB1',
+                        content: '<div style="padding:20px;">内容1</div>'
+                    }, {
+                        title: 'TAB2',
+                        content: '<div style="padding:20px;">内容2</div>'
+                    }]
+                });
+            }
+            ,test9: function(){
+                $.getJSON(layui.setter.base + 'json/layer/photos.js', function(json){
+                    layer.photos({
+                        photos: json //格式见API文档手册页
+                    });
+                });
+            }
+        };
+
+
+        $('#LAY-component-layer-list .layadmin-layer-demo .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] && active[type].call(this);
+        });
+
+
+
+    });
+</script>
+</body>
+</html>

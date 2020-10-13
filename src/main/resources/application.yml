@@ -1,0 +1,17 @@
+#连接mysql数据库
+spring:
+  datasource:
+#    username: jeedesign
+#    password: 123
+#    url: jdbc:mysql://39.97.252.94:3306/jeedesign?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 981204
+    url: jdbc:mysql://localhost:3306/resourcesharing?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+##整合mybatis
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+

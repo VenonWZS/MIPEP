@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>layuiAdmin 控制台主页一</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md8">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">资源统计</div>
+                        <div class="layui-card-body">
+
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                                <div carousel-item>
+                                    <ul class="layui-row layui-col-space10">
+                                        <li class="layui-col-xs4">
+                                            <a class="layadmin-backlog-body">
+                                                <h3>资源总数</h3>
+                                                <p><cite th:text="${resourceCount}"></cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs4">
+                                            <a class="layadmin-backlog-body">
+                                                <h3>论文资源</h3>
+                                                <p><cite th:text="${essayCount}"></cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs4">
+                                            <a class="layadmin-backlog-body">
+                                                <h3>代码资源</h3>
+                                                <p><cite th:text="${codeCount}">99</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs4">
+                                            <a onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
+                                                <h3>数据集资源</h3>
+                                                <p><cite th:text="${datasetCount}"></cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs4">
+                                            <a class="layadmin-backlog-body">
+                                                <h3>总评论数</h3>
+                                                <p><cite th:text="${commentCount}">5</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs4">
+                                            <a class="layadmin-backlog-body">
+                                                <h3>用户总数</h3>
+                                                <p><cite th:text="${userCount}"></cite></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">资源统计图</div>
+                        <div class="layui-card-body">
+                            <div id="EchartZhu" style="width: 100%;height: 500px;"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">版本信息</div>
+                <div class="layui-card-body layui-text">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="100">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>当前版本</td>
+                            <td>
+                                V 1.0.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>基于框架</td>
+                            <td>
+                                SSM-LayUI
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>主要特色</td>
+                            <td>
+                                SpringBoot
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>平台简介</td>
+                            <td>
+                                <div >
+                                    本平台为文本挖掘与智能信息处理研究团队将建立的一个研究领域的资源共享平台
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">用户信息</div>
+                <div class="layui-card-body layui-text">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="100">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>用户ID</td>
+                            <td th:text="${user.getUserid()}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>用户类型</td>
+                            <td>
+                                <span th:text="${user.getUsertype()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>用户姓名</td>
+                            <td >
+                                <span th:text="${user.getName()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>用户性别</td>
+                            <td >
+                                <span th:text="${user.getSex()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>联系方式</td>
+                            <td>
+                                <span th:text="${user.getPhone()}"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    平台详情
+                    <i class="layui-icon layui-icon-tips" lay-tips="要支持的噢" lay-offset="5"></i>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+                    <p>本平台为文本挖掘与智能信息处理研究团队将建立的一个研究领域的资源共享平台，资源类型包括领域内的论文、代码和数据集，资源领域包括信息检索(Information Retrieval)，文本摘要（Text Summarization），
+                        推荐系统（Recommendation System），社交分析（Social Analysis），情感分析（Sentiment analysis），对话系统（Conversational Systems），问答系统(Question Answering)，知识图谱（Knowledge Graph）。</p>
+                    <p>更多功能有待完善</p>
+                    <p>————王植棽</p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="../../layuiadmin/layui/layui.js?t=1"></script>
+<script>
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'console','element', 'echarts'],function() {
+
+        var element = layui.element,
+            $ = layui.jquery,
+            echarts = layui.echarts;
+        var chartZhu = echarts.init(document.getElementById('EchartZhu'));
+        var optionchartBing = {
+            title: {
+                text: '',
+                //subtext: '纯属虚构', //副标题
+                x: 'left' //标题居中
+            },
+            tooltip: {
+                // trigger: 'item' //悬浮显示对比
+            },
+            legend: {
+                //orient: 'vertical', //类型垂直,默认水平
+                left: 'left', //类型区分在左 默认居中
+                data: ['论文', '代码', '数据集']
+            },
+            color:['#f6da22','#bbe2e8','#6cacde'],
+            series: [{
+                type: 'pie', //饼状
+                radius: '60%', //圆的大小
+                center: ['50%', '50%'], //居中
+                data: [{
+                    value: [[${essayCount}]],
+                    name: '论文'
+                },
+                    {
+                        value: [[${codeCount}]],
+                        name: '代码'
+                    },
+                    {
+                        value: [[${datasetCount}]],
+                        name: '数据集'
+                    }
+                ]
+            }]
+        };
+
+        chartZhu.setOption(optionchartBing, true);
+
+
+    });
+
+    // (function (global, factory) {
+    //     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    //         typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    //             window.layui && layui.define ? layui.define(function(exports){exports('echarts',factory(exports))}) :
+    //                 (factory((global.echarts = {})));
+    // }
+    //
+
+
+</script>
+</body>
+</html>
+
